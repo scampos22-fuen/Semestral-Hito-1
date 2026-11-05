@@ -1,27 +1,13 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Detalle de un pedido individual en CafeTrack.">
-  <title>CafeTrack - Detalle de Pedido</title>
-  <link rel="stylesheet" href="css/estilos.css">
-</head>
-<body>
-  <header class="eq04-header">
-    <h1 class="eq04-titulo-sitio">CafeTrack UTP</h1>
-    <nav aria-label="Navegación principal">
-      <ul class="eq04-nav-lista">
-        <li><a href="index.html" class="eq04-nav-enlace">Menú en Vivo</a></li>
-        <li><a href="principal-listado.html" class="eq04-nav-enlace">Mis Pedidos</a></li>
-      </ul>
-    </nav>
-  </header>
+<?php
+$titulo = "CafeTrack - Detalle de Pedido";
+$descripcion = "Detalle de un pedido individual en CafeTrack.";
+require_once __DIR__ . "/includes/encabezado.php";
+?>
 
   <main class="eq04-contenedor">
     <section class="eq04-seccion">
       <h2>Ficha Detallada del Pedido #ORD-101</h2>
-      
+
       <article>
         <h3>Información General</h3>
         <p><strong>Cliente:</strong> Sergio Ceballos</p>
@@ -36,8 +22,4 @@
     </section>
   </main>
 
-  <footer class="eq04-footer">
-    <p>&copy; 2026 CafeTrack - UTP</p>
-  </footer>
-</body>
-</html>
+<?php require_once __DIR__ . "/includes/pie.php"; ?>

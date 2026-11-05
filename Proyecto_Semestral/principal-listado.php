@@ -1,29 +1,13 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Listado e historial de pedidos del usuario en CafeTrack.">
-  <title>CafeTrack - Mis Pedidos</title>
-  <link rel="stylesheet" href="css/estilos.css">
-</head>
-<body>
-  <header class="eq04-header">
-    <h1 class="eq04-titulo-sitio">CafeTrack UTP</h1>
-    <nav aria-label="Navegación principal">
-      <ul class="eq04-nav-lista">
-        <li><a href="index.html" class="eq04-nav-enlace">Menú en Vivo</a></li>
-        <li><a href="principal-formulario.html" class="eq04-nav-enlace">Realizar Pedido</a></li>
-        <li><a href="principal-listado.html" class="eq04-nav-enlace">Mis Pedidos</a></li>
-        <li><a href="perfil.html" class="eq04-nav-enlace">Perfil</a></li>
-      </ul>
-    </nav>
-  </header>
+<?php
+$titulo = "CafeTrack - Mis Pedidos";
+$descripcion = "Listado e historial de pedidos del usuario en CafeTrack.";
+require_once __DIR__ . "/includes/encabezado.php";
+?>
 
   <main class="eq04-contenedor">
     <section class="eq04-seccion">
       <h2>Historial de Mis Pedidos</h2>
-      
+
       <table class="eq04-tabla">
         <caption>Listado Personal de Solicitudes</caption>
         <thead>
@@ -43,15 +27,11 @@
             <td>Arroz con Pollo</td>
             <td>Para llevar</td>
             <td><span class="eq04-insignia-alerta">En Preparación</span></td>
-            <td><a href="principal-detalle.html">Ver Detalle</a></td>
+            <td><a href="principal-detalle.php">Ver Detalle</a></td>
           </tr>
         </tbody>
       </table>
     </section>
   </main>
 
-  <footer class="eq04-footer">
-    <p>&copy; 2026 CafeTrack - UTP</p>
-  </footer>
-</body>
-</html>
+<?php require_once __DIR__ . "/includes/pie.php"; ?>
