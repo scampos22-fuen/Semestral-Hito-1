@@ -9,21 +9,42 @@ class Pedido
     private string $plato;
     private string $modalidad;
     private string $estado;
+    private string $cedula;
+    private int $cantidad;
+    private string $horaRetiro;
+    private string $alergias;
 
-    public function __construct(string $id, string $fecha, string $plato, string $modalidad, string $estado = "En Preparación")
-    {
+    public function __construct(
+        string $id,
+        string $fecha,
+        string $plato,
+        string $modalidad,
+        string $estado = "En Preparación",
+        string $cedula = "8-000-0000",
+        int $cantidad = 1,
+        string $horaRetiro = "07:00",
+        string $alergias = ""
+    ) {
         $this->setId($id);
         $this->setFecha($fecha);
         $this->setPlato($plato);
         $this->setModalidad($modalidad);
         $this->setEstado($estado);
+        $this->setCedula($cedula);
+        $this->setCantidad($cantidad);
+        $this->setHoraRetiro($horaRetiro);
+        $this->setAlergias($alergias);
     }
 
-    public function getId(): string        { return $this->id; }
-    public function getFecha(): string     { return $this->fecha; }
-    public function getPlato(): string     { return $this->plato; }
-    public function getModalidad(): string { return $this->modalidad; }
-    public function getEstado(): string    { return $this->estado; }
+    public function getId(): string         { return $this->id; }
+    public function getFecha(): string      { return $this->fecha; }
+    public function getPlato(): string      { return $this->plato; }
+    public function getModalidad(): string  { return $this->modalidad; }
+    public function getEstado(): string     { return $this->estado; }
+    public function getCedula(): string     { return $this->cedula; }
+    public function getCantidad(): int      { return $this->cantidad; }
+    public function getHoraRetiro(): string { return $this->horaRetiro; }
+    public function getAlergias(): string   { return $this->alergias; }
 
     public function setId(string $id): void
     {
@@ -66,5 +87,39 @@ class Pedido
             throw new InvalidArgumentException("Estado no permitido.");
         }
         $this->estado = $estado;
+    }
+
+    public function setCedula(string $cedula): void
+    {
+        $cedula = trim($cedula);
+        if (!preg_match('/^[0-9]{1,2}-[0-9]{3,4}-[0-9]{4}$/', $cedula)) {
+            throw new InvalidArgumentException("La cédula debe tener el formato 8-888-8888.");
+        }
+        $this->cedula = $cedula;
+    }
+
+    public function setCantidad(int $cantidad): void
+    {
+        if ($cantidad < 1 || $cantidad > 5) {
+            throw new InvalidArgumentException("La cantidad debe estar entre 1 y 5.");
+        }
+        $this->cantidad = $cantidad;
+    }
+
+    public function setHoraRetiro(string $hora): void
+    {
+        if (!preg_match('/^([01]\d|2[0-3]):[0-5]\d$/', $hora) || $hora < "07:00" || $hora > "16:00") {
+            throw new InvalidArgumentException("La hora de retiro debe estar entre 07:00 y 16:00.");
+        }
+        $this->horaRetiro = $hora;
+    }
+
+    public function setAlergias(string $alergias): void
+    {
+        $alergias = trim($alergias);
+        if (mb_strlen($alergias) > 200) {
+            throw new InvalidArgumentException("Las alergias no pueden superar 200 caracteres.");
+        }
+        $this->alergias = $alergias;
     }
 }
