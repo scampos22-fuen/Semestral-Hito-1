@@ -8,7 +8,7 @@ require_once __DIR__ . "/includes/encabezado.php";
     <section class="eq04-seccion">
       <h2>Acceso a la Plataforma</h2>
 
-      <form action="#" method="post" class="eq04-formulario">
+      <form action="procesar_login.php" method="post" class="eq04-formulario">
         <fieldset class="eq04-fieldset">
           <legend class="eq04-legend">Credenciales de Usuario</legend>
 
