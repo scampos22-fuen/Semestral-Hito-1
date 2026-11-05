@@ -2,6 +2,8 @@
   <ul class="eq04-nav-lista">
     <li><a href="index.php" class="eq04-nav-enlace">Menú en Vivo</a></li>
 <?php if ($rol === "visitante"): ?>
+    <li><a href="buscar.php" class="eq04-nav-enlace">Buscar</a></li>
+    <li><a href="filtrar.php" class="eq04-nav-enlace">Filtrar</a></li>
     <li><a href="registro.php" class="eq04-nav-enlace">Registrarse</a></li>
     <li><a href="login.php" class="eq04-nav-enlace">Iniciar Sesión</a></li>
 <?php endif; ?>
