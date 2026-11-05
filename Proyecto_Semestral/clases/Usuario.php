@@ -22,9 +22,9 @@ class Usuario
     public function setNombre(string $nombre): void
     {
         $nombre = trim($nombre);
-        if (mb_strlen($nombre) < 3 || mb_strlen($nombre) > 50) {
-            throw new InvalidArgumentException("El nombre debe tener entre 3 y 50 caracteres.");
-        }
+       if (mb_strlen($nombre) < 3 || mb_strlen($nombre) > 100) {
+      throw new InvalidArgumentException("El nombre debe tener entre 3 y 100 caracteres.");
+}
         $this->nombre = $nombre;
     }
 
@@ -38,7 +38,7 @@ class Usuario
 
     public function setRol(string $rol): void
     {
-        if (!in_array($rol, ["usuario", "admin"], true)) {
+        if (!in_array($rol, ["usuario", "cocina", "admin"], true)) {
             throw new InvalidArgumentException("Rol no permitido.");
         }
         $this->rol = $rol;
