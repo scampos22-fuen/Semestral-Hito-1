@@ -30,3 +30,21 @@ function paginar(array $datos, int $pagina, int $porPagina = 5): array
         "total"         => $total,
     ];
 }
+
+
+// --- Funciones del Integrante 3 ---
+function limpiar(string $valor): string
+{
+    return trim($valor);
+}
+
+function sanear(string $valor): string
+{
+    return htmlspecialchars(trim($valor), ENT_QUOTES, 'UTF-8');
+}
+
+function redirigir(string $destino): void
+{
+    header("Location: " . $destino);
+    exit;
+}
