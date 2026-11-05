@@ -6,8 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     redirigir("login.php");
 }
 
-$datos    = require __DIR__ . "/config/datos_demo.php";
-$usuarios = $datos["usuarios"] ?? [];
+$usuarios = require __DIR__ . "/config/usuarios_demo.php";
 
 $correo = limpiar($_POST["correo_login"] ?? "");
 $clave  = $_POST["clave_login"] ?? "";
