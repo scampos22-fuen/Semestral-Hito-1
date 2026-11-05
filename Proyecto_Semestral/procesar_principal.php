@@ -37,15 +37,15 @@ if ($cantidad === false) {
 if (!$errores) {
     try {
         $numero = count($datos["pedidos"] ?? []) + 101;   // ORD-108 si hay 7 pedidos
-        $pedido = new Pedido(
+                $pedido = new Pedido(
             "ORD-" . str_pad((string) $numero, 3, "0", STR_PAD_LEFT),
             date("Y-m-d H:i"),
             $platos[$producto_id],
             $modalidades[$modalidad_id],
-            "En Preparación",
             $cedula,
             $cantidad,
             $hora,
+            "En Preparación",
             $alergias
         );
     } catch (InvalidArgumentException $e) {

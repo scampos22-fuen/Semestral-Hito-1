@@ -14,25 +14,25 @@ class Pedido
     private string $horaRetiro;
     private string $alergias;
 
-    public function __construct(
+        public function __construct(
         string $id,
         string $fecha,
         string $plato,
         string $modalidad,
+        string $cedula,
+        int $cantidad,
+        string $horaRetiro,
         string $estado = "En Preparación",
-        string $cedula = "8-000-0000",
-        int $cantidad = 1,
-        string $horaRetiro = "07:00",
         string $alergias = ""
     ) {
         $this->setId($id);
         $this->setFecha($fecha);
         $this->setPlato($plato);
         $this->setModalidad($modalidad);
-        $this->setEstado($estado);
         $this->setCedula($cedula);
         $this->setCantidad($cantidad);
         $this->setHoraRetiro($horaRetiro);
+        $this->setEstado($estado);
         $this->setAlergias($alergias);
     }
 
