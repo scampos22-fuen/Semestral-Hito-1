@@ -1,4 +1,5 @@
 <?php
+define('ACCESO' , true);
 $titulo = "CafeTrack - Filtrar Pedidos";
 $descripcion = "Filtro combinado de pedidos por modalidad y estado en CafeTrack.";
 require_once __DIR__ . "/includes/encabezado.php";

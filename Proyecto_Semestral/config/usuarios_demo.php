@@ -1,4 +1,5 @@
 <?php
+defined('ACCESO') or die('Acceso denegado');
 return [
     [
         "nombre" => "Admin Demo",

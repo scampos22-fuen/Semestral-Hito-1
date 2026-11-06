@@ -1,4 +1,5 @@
 <?php
+defined('ACCESO') or die('Acceso denegado');
 class Usuario
 {
     private string $nombre;

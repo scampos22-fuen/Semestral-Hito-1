@@ -1,4 +1,5 @@
 <?php
+define('ACCESO' , true);
 $titulo = "CafeTrack - Perfil de Usuario";
 $descripcion = "Perfil de usuario en CafeTrack.";
 require_once __DIR__ . "/includes/encabezado.php";

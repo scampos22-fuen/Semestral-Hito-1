@@ -1,4 +1,5 @@
 <?php
+defined('ACCESO') or die('Acceso denegado');
 class Pedido
 {
     public const MODALIDADES = ["Local", "Para llevar"];

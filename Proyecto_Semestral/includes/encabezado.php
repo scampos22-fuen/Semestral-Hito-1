@@ -1,4 +1,5 @@
 <?php
+defined('ACCESO') or die('Acceso denegado');
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }

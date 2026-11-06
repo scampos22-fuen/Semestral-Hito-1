@@ -1,4 +1,5 @@
 <?php
+define('ACCESO' , true);
 $titulo = "CafeTrack - Menú en Vivo e Inicio";
 $descripcion = "CafeTrack - Menú en tiempo real y gestión de pedidos de la cafetería universitaria.";
 require_once __DIR__ . "/includes/encabezado.php";

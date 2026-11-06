@@ -1,4 +1,6 @@
 <?php
+define('ACCESO' , true);
+require_once __DIR__ . '/includes/csrf.php';
 $titulo = "CafeTrack - Recuperar Contraseña";
 $descripcion = "Recuperación de contraseña de CafeTrack.";
 require_once __DIR__ . "/includes/encabezado.php";
@@ -10,6 +12,7 @@ require_once __DIR__ . "/includes/encabezado.php";
       <p>Ingresa tu correo registrado para recibir un enlace de recuperación.</p>
 
       <form action="#" method="post" class="eq04-formulario">
+        <?= csrf_campo() ?>
         <fieldset class="eq04-fieldset">
           <legend class="eq04-legend">Verificación de Cuenta</legend>
 

@@ -1,4 +1,5 @@
 <?php
+defined('ACCESO') or die('Acceso denegado');
 function formatear_fecha(string $fecha): string
 {
     $t = strtotime($fecha);
