@@ -8,7 +8,7 @@ require_once __DIR__ . "/includes/encabezado.php";
     <section class="eq04-seccion">
       <h2>Registro de Nuevo Usuario</h2>
 
-      <form action="#" method="post" class="eq04-formulario">
+      <form action="procesar_registro.php" method="post" class="eq04-formulario">
         <fieldset class="eq04-fieldset">
           <legend class="eq04-legend">Datos Personales y Rol</legend>
 
