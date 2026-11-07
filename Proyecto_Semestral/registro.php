@@ -1,4 +1,6 @@
 <?php
+define('ACCESO' , true);
+require_once __DIR__ . '/includes/csrf.php';
 $titulo = "CafeTrack - Registro de Usuario";
 $descripcion = "Formulario de registro de nuevos usuarios en CafeTrack.";
 require_once __DIR__ . "/includes/encabezado.php";
@@ -9,6 +11,7 @@ require_once __DIR__ . "/includes/encabezado.php";
       <h2>Registro de Nuevo Usuario</h2>
 
       <form action="procesar_registro.php" method="post" class="eq04-formulario">
+        <?= csrf_campo() ?>
         <fieldset class="eq04-fieldset">
           <legend class="eq04-legend">Datos Personales y Rol</legend>
 

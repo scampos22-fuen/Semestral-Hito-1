@@ -1,38 +1,46 @@
 <?php
+define('ACCESO' , true);
 session_start();
 require_once __DIR__ . "/includes/funciones.php";
 require_once __DIR__ . "/clases/Pedido.php";
+require_once __DIR__ . "/includes/csrf.php";
+require_once __DIR__ . "/clases/Validador.php";
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     redirigir("principal-formulario.php");
 }
 
+if (!csrf_valido($_POST["csrf"] ?? null)) {
+    $_SESSION["errores"] = ["Solicitud no válida. Recarga la página e intenta de nuevo."];
+    redirigir("principal-formulario.php");
+}
 $datos = require __DIR__ . "/config/datos_demo.php";
 
-$cedula       = limpiar($_POST["cedula_estudiante"] ?? "");
-$producto_id  = limpiar($_POST["producto_id"] ?? "");
-$cantidad_txt = limpiar($_POST["cantidad"] ?? "");
-$modalidad_id = limpiar($_POST["modalidad_consumo"] ?? "");
-$hora         = limpiar($_POST["hora_retiro"] ?? "");
-$alergias     = limpiar($_POST["alergias_restricciones"] ?? "");
+$cedula       = Validador::texto($_POST, "cedula_estudiante");
+$producto_id  = Validador::texto($_POST, "producto_id");
+$cantidad_txt = Validador::texto($_POST, "cantidad");
+$modalidad_id = Validador::texto($_POST, "modalidad_consumo");
+$hora         = Validador::texto($_POST, "hora_retiro");
+$alergias     = Validador::texto($_POST, "alergias_restricciones");
 
 // Listas blancas: código del formulario => valor del sistema
 $platos      = ["1" => "Arroz con Pollo", "2" => "Sancocho"];
 $modalidades = ["para_llevar" => "Para llevar", "comer_en_local" => "Local"];
 
-$cantidad = filter_var($cantidad_txt, FILTER_VALIDATE_INT, ["options" => ["min_range" => 1, "max_range" => 5]]);
-$errores = [];
-
-if (!isset($platos[$producto_id])) {
-    $errores[] = "Selecciona un plato válido.";
-}
-if (!isset($modalidades[$modalidad_id])) {
-    $errores[] = "Selecciona una modalidad válida.";
-}
-if ($cantidad === false) {
-    $errores[] = "La cantidad debe ser un número entre 1 y 5.";
-}
-
+$v = new Validador();
+$v->cedula("Cédula", $cedula);
+$v->listaBlanca("Plato", $producto_id, array_keys($platos));
+$v->listaBlanca("Modalidad", $modalidad_id, array_keys($modalidades));
+$v->rango("Cantidad", $cantidad_txt, 1, 5);
+$v->regla(
+    "Hora",
+    preg_match('/^([01]\d|2[0-3]):[0-5]\d$/', $hora) === 1
+        && $hora >= "07:00" && $hora <= "16:00",
+    "La hora de retiro debe estar entre 07:00 y 16:00."
+);
+$v->longitud("Alergias", $alergias, 0, 200);
+$errores = $v->errores();
+$cantidad = (int) $cantidad_txt;
 // Segunda capa: la clase Pedido valida el resto (cédula, hora, alergias)
 if (!$errores) {
     try {

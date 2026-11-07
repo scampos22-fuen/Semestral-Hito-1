@@ -1,4 +1,5 @@
 <?php
+define('ACCESO' , true);
 $titulo = "CafeTrack - Panel de Despacho Cocina";
 $descripcion = "Panel de control de cocina y despacho para CafeTrack.";
 require_once __DIR__ . "/includes/encabezado.php";

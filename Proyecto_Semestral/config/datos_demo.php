@@ -1,4 +1,5 @@
 <?php
+defined('ACCESO') or die('Acceso denegado');
 return [
     "pedidos" => [
         ["id" => "ORD-101", "fecha" => "2026-10-19 12:00", "plato" => "Arroz con Pollo", "modalidad" => "Para llevar", "estado" => "En Preparación"],

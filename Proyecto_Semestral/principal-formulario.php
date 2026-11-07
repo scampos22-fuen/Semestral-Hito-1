@@ -1,4 +1,6 @@
 <?php
+define('ACCESO' , true);
+require_once __DIR__ . '/includes/csrf.php';
 $titulo = "CafeTrack - Realizar Pedido";
 $descripcion = "Formulario para realizar un nuevo pedido en CafeTrack.";
 require_once __DIR__ . "/includes/encabezado.php";
@@ -9,6 +11,7 @@ require_once __DIR__ . "/includes/encabezado.php";
       <h2>Formulario de Solicitud de Pedido</h2>
 
       <form action="procesar_principal.php" method="post" class="eq04-formulario">
+        <?= csrf_campo() ?>
         <fieldset class="eq04-fieldset">
           <legend class="eq04-legend">Datos del Pedido y Cliente</legend>
 
