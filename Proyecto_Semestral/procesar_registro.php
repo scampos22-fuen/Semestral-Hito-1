@@ -29,16 +29,15 @@ $v->requerido("Correo", $correo)->correo("Correo", $correo);
 $v->cedula("Cédula", $cedula);
 $v->listaBlanca("Tipo de usuario", $rol_id, array_keys($roles));
 $v->requerido("Contraseña", $clave)->longitud("Contraseña", $clave, 8, 50);
-// Aquí va tu regla de negocio con $v->regla(...)
 
 $errores = $v->errores();
-}
-
-try {
-    $hash    = password_hash($clave, PASSWORD_DEFAULT);
-    $usuario = new Usuario($nombre, $correo, $hash, $roles[$rol_id] ?? "usuario");
-} catch (InvalidArgumentException $e) {
-    $errores[] = $e->getMessage();
+if (!$errores) {
+    try {
+        $hash    = password_hash($clave, PASSWORD_DEFAULT);
+        $usuario = new Usuario($nombre, $correo, $hash, $roles[$rol_id] ?? "usuario");
+    } catch (InvalidArgumentException $e) {
+        $errores[] = $e->getMessage();
+    }
 }
 
 if ($errores) {
