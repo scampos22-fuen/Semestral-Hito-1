@@ -14,7 +14,7 @@ require_once __DIR__ . "/includes/encabezado.php";
         <p><strong>Nombre:</strong> Sergio Ceballos</p>
         <p><strong>Cédula:</strong> 7-715-876</p>
         <p><strong>Correo Electrónico:</strong> sergio.ceballos@utp.ac.pa</p>
-        <p><strong>Rol:</strong> Cliente (Estudiante)</p>
+        <p><strong>Rol:</strong> Administrador</p>
       </article>
     </section>
   </main>
